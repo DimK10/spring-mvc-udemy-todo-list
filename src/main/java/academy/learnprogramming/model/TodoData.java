@@ -2,6 +2,7 @@ package academy.learnprogramming.model;
 
 import lombok.NonNull;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +17,12 @@ public class TodoData {
 
     // == constructors ==
     public TodoData() {
+
+        // add dummy data, using the addItem method so it sets the id field
+        addItem(new TodoItem("first", "first details", LocalDate.now()));
+        addItem(new TodoItem("second", "second details", LocalDate.now()));
+        addItem(new TodoItem("third", "third details", LocalDate.now()));
+        addItem(new TodoItem("fourth", "fourth details", LocalDate.now()));
     }
 
     // == public methods ==
@@ -38,6 +45,28 @@ public class TodoData {
 
             if (item.getId() == id) {
                 itemIterator.remove();
+                break;
+            }
+        }
+    }
+
+    public TodoItem getItem(int id) {
+        for (TodoItem item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void updateIem(@NonNull TodoItem toUpdate) {
+        ListIterator<TodoItem> itemIterator = items.listIterator();
+
+        while (itemIterator.hasNext()) {
+            TodoItem item = itemIterator.next();
+
+            if (item.equals(toUpdate)) {
+                itemIterator.set(toUpdate);
                 break;
             }
         }
