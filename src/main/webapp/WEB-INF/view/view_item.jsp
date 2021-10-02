@@ -18,8 +18,6 @@
 </head>
 <body>
     <div align="center">
-        <c:url var="itemsLink" value="${Mappings.ITEMS}"/>
-        <h2><a href="${itemsLink}">Show Todo Items</a></h2>
         <table>
             <tr>
                 <td><label>ID</label></td>
@@ -38,6 +36,8 @@
                 <td>${todoItem.deadline}</td>
             </tr>
         </table>
+        <c:url var="itemsLink" value="${Mappings.ITEMS}"/>
+        <h2><a href="${itemsLink}">View Table</a></h2>
     </div>
 
 </body>
